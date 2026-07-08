@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--MyBatisde1DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件-->
+<!--mapper:核心跟标签-->
+<!--namespace：名称空间-->
+<mapper namespace="com.itheima.mapper.StudentMapper">
+<!--    resultType：指定结果映射对象类型-->
+<!--    parameter：指定参数映射对象属性-->
+    <select id="selectAll" resultType="com.itheima.bean.Student">
+        SELECT * FROM student
+    </select>
+    <select id="selectCondition" resultType="com.itheima.bean.Student" parameterType="com.itheima.bean.Student">
+        SELECT * FROM student
+        <!--  SELECT * FROM student WHERE id = #{id} AND  name = #{name} AND age = #{age}-->
+        <where><!-- where,if是动态的SQL中的标签，可以减少代码量   -->
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                name = #{name}
+            </if>
+            <if test="age != null">
+                age = #{age}
+            </if>
+        </where>
+    </select>
+    <select id="selectByIds" resultType="com.itheima.bean.Student" parameterType="list">
+        ELECT * FROM student WHERE id IN(1,2,3)
+    </select>
+
+
+</mapper>

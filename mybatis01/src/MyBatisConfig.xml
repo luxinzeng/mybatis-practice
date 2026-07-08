@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--映射配置文件-->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<configuration><!--核心跟标签-->
+    <environments default="mysql"><!--default选择下面哪一个environment，就填写他的id-->
+        <environment id="mysql">
+<!--            事务管理，type采用JDBC默认事务-->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/learn_demo3?useSSL=false&amp;serverTimezone=Asia/Shanghai"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        在核心配置文件中引入映射配置文件-->
+        <mapper resource="StudentMapper.xml"/>
+    </mappers>
+</configuration>
